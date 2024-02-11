@@ -1,9 +1,12 @@
 import seaborn as sns
 import hashlib
+import pandas as pd
+import matplotlib.pyplot as plt
 
-tohash = "hellu"
 
-dataset=[]
+tohash = "hi"
+
+dataset={}
 
 
 def hashandint(input):
@@ -13,7 +16,12 @@ def hashandint(input):
 
 
 
-for x in range(10):
+for x in range(1,1000):
     tohash=hashandint(tohash)
-    dataset.append(tohash)
+    dataset.update({x:tohash})
 
+keys = list(dataset.keys())
+vals = list(dataset.values())
+
+plt.plot(range(len(dataset)),vals)
+plt.show()
