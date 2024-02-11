@@ -3,6 +3,7 @@ import hashlib
 
 tohash = "hellu"
 
+dataset=[]
 
 
 def hashandint(input):
@@ -14,4 +15,5 @@ def hashandint(input):
 
 for x in range(10):
     tohash=hashandint(tohash)
-    print(tohash)
+    dataset.append(tohash)
+
