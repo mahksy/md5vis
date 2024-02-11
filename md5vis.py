@@ -10,9 +10,9 @@ def hashandint(input):
 
 
 
-def plotmd5(seed, iterations, index):
+def plotmd5(seed, iterations, index, overlay):
     tohash = seed
-    index+=1
+    #index+=1
     dataset={}
 
     for interation in range(iterations):
@@ -22,19 +22,27 @@ def plotmd5(seed, iterations, index):
     keys = list(dataset.keys())
     vals = list(dataset.values())
 
-    plt.subplot(len(words),1,index)
 
 
     plt.plot(range(len(dataset)),vals)
     plt.title(seed)
+    plt.tight_layout(pad=1.0)
 
 iterations = 100
+words = ["python", "3", "heckin", "rocks", "hell", "yeah"]
+overlay = False
 
-words =["yeet", "roar", "damn", "flup"]
 
 for x in words:
-    plotmd5(x, iterations,words.index(x))
-    print(words.index(x))
-
-
+    print(words.index(x)+1)
+    if overlay == True:
+        plotmd5(x, iterations,0,overlay)
+        plt.title(words)
+        plt.subplot(1,1,1)
+        
+        
+    else:
+        plotmd5(x, iterations,words.index(x),overlay) 
+        plt.subplot(len(words),1,words.index(x))
+        #print(words.index(x))
 plt.show()
