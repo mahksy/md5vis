@@ -10,7 +10,7 @@ def hashandint(input):
 
 
 
-def plotmd5(seed, iterations):
+def plotmd5(seed, iterations, index):
     tohash = seed
 
     dataset={}
@@ -22,9 +22,12 @@ def plotmd5(seed, iterations):
     keys = list(dataset.keys())
     vals = list(dataset.values())
 
-    plt.plot(range(len(dataset)),vals)
-    plt.show()
+    fig,ax=plt.subplots(2)
 
 
+    ax[index].plot(range(len(dataset)),vals)
+    ax[index].set_title(seed)
 
-plotmd5("yo",10)
+plotmd5("testkuh", 10, 0)
+plotmd5("almananlage", 10, 1)
+plt.show()
