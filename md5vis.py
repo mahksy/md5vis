@@ -15,19 +15,26 @@ def plotmd5(seed, iterations, index):
     index+=1
     dataset={}
 
-    for x in range(iterations):
+    for interation in range(iterations):
         tohash=hashandint(tohash)
-        dataset.update({x:tohash})
+        dataset.update({interation:tohash})
 
     keys = list(dataset.keys())
     vals = list(dataset.values())
 
-    plt.subplot(2,1,index)
+    plt.subplot(len(words),1,index)
 
 
     plt.plot(range(len(dataset)),vals)
     plt.title(seed)
 
-plotmd5("testkuh", 10, 0)
-plotmd5("almananlage", 10, 1)
+iterations = 100
+
+words =["yeet", "roar", "damn", "flup"]
+
+for x in words:
+    plotmd5(x, iterations,words.index(x))
+    print(words.index(x))
+
+
 plt.show()
