@@ -3,12 +3,6 @@ import hashlib
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
-tohash = "hi"
-
-dataset={}
-
-
 def hashandint(input):
     input=str(input)
     md5hash = hashlib.md5(input.encode('utf-8')).hexdigest()
@@ -16,12 +10,21 @@ def hashandint(input):
 
 
 
-for x in range(1,1000):
-    tohash=hashandint(tohash)
-    dataset.update({x:tohash})
+def plotmd5(seed, iterations):
+    tohash = seed
 
-keys = list(dataset.keys())
-vals = list(dataset.values())
+    dataset={}
 
-plt.plot(range(len(dataset)),vals)
-plt.show()
+    for x in range(iterations):
+        tohash=hashandint(tohash)
+        dataset.update({x:tohash})
+
+    keys = list(dataset.keys())
+    vals = list(dataset.values())
+
+    plt.plot(range(len(dataset)),vals)
+    plt.show()
+
+
+
+plotmd5("yo",10)
